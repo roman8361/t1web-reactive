@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20240320_init_table" author="Roman Kravchenko">
+
+        <createTable tableName="client_limit">
+            <column name="id" type="${type.integer}"
+                    remarks="Уникальный идентификатор" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="client_id" type="${type.integer}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_limit" type="${type.double}"
+                    remarks="Лимит">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="client_limit">
+            <column name="client_id" value="1"/>
+            <column name="current_limit" value="100000"/>
+        </insert>
+        <insert tableName="client_limit">
+            <column name="client_id" value="2"/>
+            <column name="current_limit" value="100000"/>
+        </insert>
+        <insert tableName="client_limit">
+            <column name="client_id" value="3"/>
+            <column name="current_limit" value="100000"/>
+        </insert>
+        <insert tableName="client_limit">
+            <column name="client_id" value="4"/>
+            <column name="current_limit" value="100000"/>
+        </insert>
+        <insert tableName="client_limit">
+            <column name="client_id" value="5"/>
+            <column name="current_limit" value="100000"/>
+        </insert>
+        <insert tableName="client_limit">
+            <column name="client_id" value="6"/>
+            <column name="current_limit" value="100000"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

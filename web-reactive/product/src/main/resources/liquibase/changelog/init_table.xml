@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20240320_init_table" author="Roman Kravchenko">
+
+        <createTable tableName="client">
+            <column name="id" type="${type.integer}"
+                    remarks="Уникальный идентификатор" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="${type.string}"
+                    remarks="Имя клиента">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="client">
+            <column name="name" value="Александр Алехин"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Макс Эйве"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Михаил Ботвинник"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Василий Смыслов"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Михаил Таль"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Тигран Петросян"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Борис Спасский"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Роберт Фишер"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Анатолий Карпов"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Гарри Каспаров"/>
+        </insert>
+        <insert tableName="client">
+            <column name="name" value="Сергей Карякин"/>
+        </insert>
+
+        <createTable tableName="client_product">
+            <column name="id" type="${type.integer}"
+                    remarks="Уникальный идентификатор" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="client_id" type="${type.integer}">
+                <constraints nullable="false" foreignKeyName="fk_client_product"
+                             references="client(id)"/>
+            </column>
+            <column name="count" type="${type.integer}"
+                    remarks="Счёт">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="${type.double}"
+                    remarks="Баланс">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="${type.string}"
+                    remarks="Тип">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="client_product">
+            <column name="client_id" valueComputed="(SELECT id FROM client WHERE name = 'Александр Алехин')"/>
+            <column name="count" value="123456789"/>
+            <column name="balance" value="100000.50"/>
+            <column name="type" value="CARD"/>
+        </insert>
+        <insert tableName="client_product">
+            <column name="client_id" valueComputed="(SELECT id FROM client WHERE name = 'Александр Алехин')"/>
+            <column name="count" value="78945613"/>
+            <column name="balance" value="50000.50"/>
+            <column name="type" value="INVOICE"/>
+        </insert>
+
+        <insert tableName="client_product">
+            <column name="client_id" valueComputed="(SELECT id FROM client WHERE name = 'Михаил Таль')"/>
+            <column name="count" value="123456789"/>
+            <column name="balance" value="4000050"/>
+            <column name="type" value="CARD"/>
+        </insert>
+        <insert tableName="client_product">
+            <column name="client_id" valueComputed="(SELECT id FROM client WHERE name = 'Михаил Таль')"/>
+            <column name="count" value="78945613"/>
+            <column name="balance" value="56000.50"/>
+            <column name="type" value="INVOICE"/>
+        </insert>
+
+        <insert tableName="client_product">
+            <column name="client_id" valueComputed="(SELECT id FROM client WHERE name = 'Роберт Фишер')"/>
+            <column name="count" value="123456789"/>
+            <column name="balance" value="5000.50"/>
+            <column name="type" value="CARD"/>
+        </insert>
+        <insert tableName="client_product">
+            <column name="client_id" valueComputed="(SELECT id FROM client WHERE name = 'Роберт Фишер')"/>
+            <column name="count" value="78945613"/>
+            <column name="balance" value="500.50"/>
+            <column name="type" value="INVOICE"/>
+        </insert>
+
+        <insert tableName="client_product">
+            <column name="client_id" valueComputed="(SELECT id FROM client WHERE name = 'Анатолий Карпов')"/>
+            <column name="count" value="123456789"/>
+            <column name="balance" value="980000.50"/>
+            <column name="type" value="CARD"/>
+        </insert>
+        <insert tableName="client_product">
+            <column name="client_id" valueComputed="(SELECT id FROM client WHERE name = 'Анатолий Карпов')"/>
+            <column name="count" value="78945613"/>
+            <column name="balance" value="850000.50"/>
+            <column name="type" value="INVOICE"/>
+        </insert>
+
+        <insert tableName="client_product">
+            <column name="client_id" valueComputed="(SELECT id FROM client WHERE name = 'Сергей Карякин')"/>
+            <column name="count" value="1112223456"/>
+            <column name="balance" value="105000000"/>
+            <column name="type" value="CARD"/>
+        </insert>
+        <insert tableName="client_product">
+            <column name="client_id" valueComputed="(SELECT id FROM client WHERE name = 'Сергей Карякин')"/>
+            <column name="count" value="1112223456"/>
+            <column name="balance" value="750000.55"/>
+            <column name="type" value="INVOICE"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

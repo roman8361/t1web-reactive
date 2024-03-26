@@ -1,0 +1,77 @@
+POST http://localhost:8081/api/v1
+Content-Type: application/json
+
+{
+  "id": 6,
+  "userId": 3,
+  "count": 123464,
+  "balance": 5000,
+  "type": "INVOICE"
+}
+
+
+###
+GET http://localhost:8081/api/v1/checkProduct?type=CARD
+USERID: 12345655555
+
+###
+GET http://localhost:8081/api/v1/getAllProductByUserId?userId=0
+
+###
+GET http://localhost:8081/api/v1/getAllProductByUserId
+
+###
+POST http://localhost:8082/api/v1/product
+Content-Type: application/json
+
+{
+  "id": 4,
+  "code": "EXAMPLE"
+}
+
+###
+GET http://localhost:8082/api/v1/product/checkProduct?type=CARD
+USERID: 2
+
+###
+GET http://localhost:8083/api/v1/client/all
+
+###
+GET http://localhost:8083/api/v1/client
+CLIENT_ID: 10000
+
+###
+GET http://localhost:8082/api/v1/client
+CLIENT_ID: 9
+
+###
+GET http://localhost:8082/api/v1/client/all
+
+###
+PUT http://localhost:8083/api/v1/products
+CLIENT_ID: 9
+Content-Type: application/json
+
+{
+  "type": "CARD",
+  "sum": 9999
+}
+
+###
+POST http://localhost:8084/api/v1/limit
+Content-Type: application/json
+CLIENT_ID: 15
+
+{
+    "sum": 5000.00
+}
+
+###
+POST http://localhost:8082/api/v1/debit
+Content-Type: application/json
+CLIENT_ID: 5
+
+{
+  "sum": 5000.00,
+  "product": "CARD"
+}
