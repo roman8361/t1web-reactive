@@ -1,0 +1,17 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: payment
+
+integrations:
+  product:
+    base-url: "http://localhost:8083/api/v1/products"
+    connect-timeout: 1s
+    read-timeout: 30s
+    get-all: "/all"
+  limit:
+    base-url: "http://localhost:8084/api/v1/limit"
+    connect-timeout: 1s
+    read-timeout: 30s

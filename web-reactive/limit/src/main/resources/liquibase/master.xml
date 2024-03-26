@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <property name="type.varchar" value="varchar"/>
+    <property name="type.char" value="char"/>
+    <property name="type.string" value="varchar(255)"/>
+    <property name="type.longstring" value="varchar(4096)"/>
+
+    <property name="type.text" value="text"/>
+    <property name="type.blob" value="blob"/>
+
+    <property name="type.long" value="bigint"/>
+    <property name="type.integer" value="integer"/>
+    <property name="type.float" value="float4"/>
+    <property name="type.double" value="double"/>
+
+    <property name="type.boolean" value="boolean"/>
+    <property name="type.timestamp" value="timestamp"/>
+    <property name="type.timestamp_tz" value="timestamp with time zone"/>
+    <property name="type.date" value="date"/>
+    <property name="now" value="current_timestamp"/>
+    <property name="type.uuid" value="uuid" dbms="postgresql"/>
+
+    <includeAll path="classpath:liquibase/changelog" relativeToChangelogFile="false"/>
+
+</databaseChangeLog>

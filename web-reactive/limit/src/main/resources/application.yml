@@ -1,0 +1,27 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: limit
+  liquibase:
+    change-log: classpath:/liquibase/master.xml
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/test_db?currentSchema=limit
+    user: postgres
+  main:
+    web-application-type: reactive
+    banner-mode: 'off'
+  r2dbc:
+    password: postgres
+    pool:
+      enabled: true
+      initialSize: 8
+      max-life-time: 30m
+      maxSize: 15
+      name: r2dbc-orders-pool
+    url: r2dbc:postgresql://localhost:5432/test_db?currentSchema=limit
+    username: postgres
+
+scheduler:
+  cronExpression: "0 1 0 * * *" # Каждый день в 00:01

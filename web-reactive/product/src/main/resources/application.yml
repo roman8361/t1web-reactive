@@ -1,0 +1,25 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: product
+  liquibase:
+    change-log: classpath:/liquibase/master.xml
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/test_db?currentSchema=product
+    user: postgres
+  main:
+    web-application-type: reactive
+    banner-mode: 'off'
+  r2dbc:
+    password: postgres
+    pool:
+      enabled: true
+      initialSize: 8
+      max-life-time: 30m
+      maxSize: 15
+      name: r2dbc-orders-pool
+    url: r2dbc:postgresql://localhost:5432/test_db?currentSchema=product
+    username: postgres
+
